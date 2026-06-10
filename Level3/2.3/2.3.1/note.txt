@@ -1,0 +1,18 @@
+My output is the following:
+
+"""
+Default ctor called!
+Please input an x value: 5
+Please input a y value: 3.2
+Parameterized ctor called!
+Copy ctor called!
+Distance is: Copy ctor called!
+5.12445
+Default destructor called!
+Default destructor called!
+Default destructor called!
+Default destructor called!
+
+"""
+
+I learned that when you call the Distance() function, we pass a Point object by value, meaning that we make a local copy of that object in the scope of the function. In that case, a copy ctor is used.  It turns out that even when we didn't implement our own copy ctor, the function still worked, and that is because compilers automatically create a copy ctor for us by default when we don't specificy our own. (same goes for defualt ctor and dtor as well, and this gives "Rule of 0" as compared to "Rule of 3 or Rule of 5" in modern C++ afaik). 

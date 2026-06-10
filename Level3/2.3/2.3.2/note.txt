@@ -1,0 +1,16 @@
+As compared to the previous exercise, by passing by refernce, we have reduced the number of copy ctor calls.
+When we pass by value, we are less memory efficient, and when we pass by reference we reduce the need for local function copies.
+See the output below:
+
+"""
+Default ctor called!
+Please input an x value: 5
+Please input a y value: 5
+Parameterized ctor called!
+Copy ctor called!
+Distance is: 7.11758
+Default destructor called!
+Default destructor called!
+Default destructor called!
+
+""""
