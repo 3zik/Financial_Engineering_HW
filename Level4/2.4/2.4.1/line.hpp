@@ -1,5 +1,6 @@
-// Ethan Furman 6/9/26
-// Line.hpp for Exercise 2.3.5
+// Ethan Furman 6/22/26
+// Line.hpp for Exercise 2.4.1
+// Added assignment operator for line class
 
 #ifndef LINE_HPP
 #define LINE_HPP
@@ -26,6 +27,8 @@ public:
 
 	// default destructor
 	~Line();
+
+	Line& operator= (const Line& source); // assignment operator
 
 	// getters (allow for overload)
 	const Point& start() const;

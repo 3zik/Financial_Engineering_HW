@@ -1,6 +1,7 @@
-// EFurman 6/6/26
-// point class source file UPDATED for exercise 2.3.4
-// Again, for this exercise, getters, Distance(), and ToString() must be const. 
+// EFurman 6/22/26
+// point class source file (recycled from HW 3)
+// For Exercise 2.4.1, I added basic operators to the Point class
+// Specifically, I added: the -, *, +, ==, =, *= operators
 
 #include "point.hpp"
 #include <sstream> 
@@ -11,40 +12,54 @@
 // default constructor with initializer list
 // initialize m_x and m_y to both be 0.0
 Point::Point() : m_x(0.0), m_y(0.0) {
-	std::cout << "Default ctor called!\n";
+	// std::cout << "Default ctor called!\n";
 }
 
 // copy ctor 
 Point::Point(const Point& other) : m_x(other.m_x), m_y(other.m_y){
-	std::cout << "Copy ctor called!\n";
+	//std::cout << "Copy ctor called!\n";
 }
 
 // other ctor 
 Point::Point(const double& x, const double& y) : m_x(x), m_y(y){
-		std::cout << "Parameterized ctor called!\n";
+	//std::cout << "Parameterized ctor called!\n";
 }
 
 // default destructor 
 Point::~Point(){
-	std::cout << "Default destructor called!\n";
+	//std::cout << "Default destructor called!\n";
 }
 
-	// getters
-double Point::X() const{ // const because a getter does not change the value 
-	return m_x; //returns a copy of m_x
-}
-double Point::Y() const{
-	return m_y; //returns a copy of m_y
+// OPEARTORS DEFINED HERE 
+Point Point::operator- () const{ // negate the coordinates
+	return Point(-m_x, -m_y); // creates a new Point with -m_x and -m_y
 }
 
-// setters
-void Point::X(double x){ // setters are void functions that don't return, only set values
-					   // It takes in the parameter that is the same type as m_x
-	m_x = x; // sets m_x
+Point Point::operator* (double factor) const { // scale the coordinates 
+	return Point(factor * m_x, factor * m_y); //return a new Point with factor * m_x and factor * m_y 
 }
-void Point::Y(double y) { // same for m_y
-	m_y = y; // sets m_y
+
+Point Point::operator+ (const Point& p) const { // add the coordinates 
+	return Point(m_x + p.X(), m_y + p.Y()); // retrusn a new Point with the summed x and y values. uses getters for Point p 
 }
+
+bool Point::operator== (const Point& p) const{ // check if two points are equivalent
+	return (m_x == p.X() && m_y == p.Y()); // uses conditional and operators and getters from p 
+}
+
+Point& Point::operator= (const Point& source){ // Assignment operator
+	m_x = source.X();
+	m_y = source.Y();
+	return *this;
+}
+
+Point& Point::operator*= (double factor){ // scale coordinates and then assign 
+	m_x = factor * m_x;
+	m_y = factor * m_y;
+	return *this;
+}
+
+// getters/setters are defined inline in the .hpp file
 
 // distnace functions - updated for exercise 2.2.2
 

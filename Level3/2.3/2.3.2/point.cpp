@@ -57,8 +57,8 @@ double Point::Distance(const Point& p) const { // Updated input param to be by c
 	// So something like the following throws a compiler error:
 	// p.setX(5);
 
-	double x_distance = std::abs(p.getX() - m_x); // calculates the absolute difference between x values 
-	double y_distance = std::abs(p.getY() - m_y); // same for y
+	double x_distance = std::abs(p.m_x - m_x); // calculates the absolute difference between x values 
+	double y_distance = std::abs(p.m_y - m_y); // same for y
 
 	return std::sqrt(x_distance * x_distance + y_distance * y_distance); // returns the absolute difference between the points
 } 

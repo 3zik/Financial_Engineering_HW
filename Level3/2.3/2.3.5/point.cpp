@@ -58,8 +58,8 @@ double Point::Distance(const Point& p) const { // Updated input param to be by c
 	// p.setX(5);
 
 	// make sure to update the names of the fns below as well:
-	double x_distance = std::abs(p.X() - m_x); // calculates the absolute difference between x values 
-	double y_distance = std::abs(p.Y() - m_y); // same for y
+	double x_distance = std::abs(p.m_x - m_x); // calculates the absolute difference between x values 
+	double y_distance = std::abs(p.m_y - m_y); // same for y
 
 	return std::sqrt(x_distance * x_distance + y_distance * y_distance); // returns the absolute difference between the points
 } 

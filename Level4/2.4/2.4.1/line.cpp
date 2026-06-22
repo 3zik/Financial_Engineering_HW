@@ -1,6 +1,6 @@
-// Ethan Furman 6/9/26
-// Line.cpp for Exercise 2.3.5
-
+// Ethan Furman 6/22/26
+// Line.cpp for Exercise 2.4.1
+// Added assignment operator for line.cpp class 
 
 #include "line.hpp" 
 #include "point.hpp" // required for using Point objects
@@ -21,6 +21,15 @@ Line::Line(const Point& other_start, const Point& other_end) : start_(other_star
 
 // default dtor here 
 Line::~Line() {}
+
+// Assignment operator
+Line& Line::operator= (const Line& source){ // Assignment operator
+	start_ = source.start();
+	end_ = source.end();
+	return *this;
+}
+
+
 
 // getters (with overload)
 const Point& Line::start() const { // dont forget this is const

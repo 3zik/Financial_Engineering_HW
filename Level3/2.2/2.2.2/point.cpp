@@ -38,8 +38,8 @@ double Point::DistanceOrigin() const { // finds distance from the Point to the o
 	return std::sqrt(m_x*m_x + m_y * m_y);
 }
 double Point::Distance(Point p) const { // finds distance from the Point to Point p (absolute distance, no negative values)
-	double x_distance = std::abs(p.getX() - m_x); // calculates the absolute difference between x values 
-	double y_distance = std::abs(p.getY() - m_y); // same for y 
+	double x_distance = std::abs(p.m_x - m_x); // calculates the absolute difference between x values 
+	double y_distance = std::abs(p.m_y - m_y); // same for y 
 	return std::sqrt(x_distance * x_distance + y_distance * y_distance); // returns the absolute difference between the points
 } 
 
