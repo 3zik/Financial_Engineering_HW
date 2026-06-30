@@ -1,0 +1,77 @@
+// EThan 6/30/2026
+//
+// array.cpp 
+//
+// Source file for Array Object created for Exercise 2.5.3
+
+#include <iostream>
+#include "array.hpp"
+
+// default ctor allocates 10 elements 
+Array::Array() : m_size(10) {
+	m_data = new Point[10];
+}
+
+// ctor with size argument
+// Take in size_t, helpful for safety here + matches the member var
+Array::Array(size_t size) : m_size(size) {
+	m_data = new Point[m_size];
+}
+
+// copy ctor 
+Array::Array(const Array& other) {
+	m_size = other.m_size;
+	m_data = new Point[m_size];				// allocates new arr on the heap with otherSize 
+	for (int i = 0; i < m_size; ++i){	// iterates through each val on the other array
+		m_data[i] = other.m_data[i]; // uses GetElement(). 
+	}
+}
+
+Array::~Array() {
+	delete[] m_data;
+	m_data = nullptr; // reset m_data for no dangling ptr 
+}
+
+Array& Array::operator=(const Array& other){
+	if (this != &other){					// if equal, just return *this
+		
+		delete[] m_data;
+		m_size = other.m_size;
+		
+		m_data = new Point[m_size];
+
+		for (int i = 0; i < m_size; ++i){
+			m_data[i] = other.m_data[i];
+		}
+
+	}
+	return *this;		// must return ref to Array, because a = b = c; case 
+}
+// getters/setters:
+size_t Array::Size() const{
+	return m_size;
+}
+
+void Array::SetElement(size_t idx, const Point& point) {
+	if (idx < m_size){			// will only work with a valid index 
+		m_data[idx] = point;
+	}
+}
+
+Point& Array::GetElement(size_t idx, const Point& point){
+	if (idx < m_size){
+		return m_data[idx];
+	}
+	return m_data[0];
+}
+
+// [] operator 
+Point& Array::operator[](size_t idx){
+	if (idx < m_size){
+		return m_data[idx];
+	}
+
+	return m_data[0];
+} 
+
+
