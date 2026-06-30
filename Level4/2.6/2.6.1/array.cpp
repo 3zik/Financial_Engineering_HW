@@ -2,26 +2,30 @@
 //
 // array.cpp 
 //
-// Source file for Array Object created for Exercise 2.5.3
+// Source file for Array Object
+// Put into NS Ethan::CAD
 
 #include <iostream>
 #include "array.hpp"
 
+namespace Ethan::Containers{
+
+
 // default ctor allocates 10 elements 
 Array::Array() : m_size(10) {
-	m_data = new Point[10];
+	m_data = new Ethan::CAD::Point[10];
 }
 
 // ctor with size argument
 // Take in size_t, helpful for safety here + matches the member var
 Array::Array(size_t size) : m_size(size) {
-	m_data = new Point[m_size];
+	m_data = new Ethan::CAD::Point[m_size];
 }
 
 // copy ctor 
 Array::Array(const Array& other) {
 	m_size = other.m_size;
-	m_data = new Point[m_size];				// allocates new arr on the heap with otherSize 
+	m_data = new Ethan::CAD::Point[m_size];				// allocates new arr on the heap with otherSize 
 	for (int i = 0; i < m_size; ++i){	// iterates through each val on the other array
 		m_data[i] = other.m_data[i]; // uses GetElement(). 
 	}
@@ -38,7 +42,7 @@ Array& Array::operator=(const Array& other){
 		delete[] m_data;
 		m_size = other.m_size;
 		
-		m_data = new Point[m_size];
+		m_data = new Ethan::CAD::Point[m_size];
 
 		for (int i = 0; i < m_size; ++i){
 			m_data[i] = other.m_data[i];
@@ -52,13 +56,13 @@ size_t Array::Size() const{
 	return m_size;
 }
 
-void Array::SetElement(size_t idx, const Point& point) {
+void Array::SetElement(size_t idx, const Ethan::CAD::Point& point) {
 	if (idx < m_size){			// will only work with a valid index 
 		m_data[idx] = point;
 	}
 }
 
-Point& Array::GetElement(size_t idx, const Point& point){
+Ethan::CAD::Point& Array::GetElement(size_t idx, const Ethan::CAD::Point& point){
 	if (idx < m_size){
 		return m_data[idx];
 	}
@@ -66,7 +70,7 @@ Point& Array::GetElement(size_t idx, const Point& point){
 }
 
 // [] operator 
-Point& Array::operator[](size_t idx){
+Ethan::CAD::Point& Array::operator[](size_t idx){
 	if (idx < m_size){
 		return m_data[idx];
 	}
@@ -74,7 +78,7 @@ Point& Array::operator[](size_t idx){
 	return m_data[0];
 }
 
-Point& Array::operator[](size_t idx) const {
+Ethan::CAD::Point& Array::operator[](size_t idx) const {
 	if(idx < m_size){
 		return m_data[idx];
 	}
@@ -82,4 +86,4 @@ Point& Array::operator[](size_t idx) const {
 }
 
 
-
+}

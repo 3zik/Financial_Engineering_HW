@@ -25,6 +25,8 @@ public:
 
 	Point& GetElement(size_t idx, const Point& point);
 	Point& operator[](size_t idx);
-
+	Point& operator[](size_t index) const; // WE NEED TO have a const operator[] to complete this array class 
+	// the const [] overload allows us to safely read the array using [], while the non const version allows us to edit 
+	// This is useful in cases when we have a const Array we want to read only
 	
 };
