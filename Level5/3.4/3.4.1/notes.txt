@@ -1,0 +1,6 @@
+Without colon syntax, we get 10 calls. Body assignment is a less effective method, 
+because it constructs and then overwrites. Colon syntax is syntatically better because
+it constructs correctly once and needs no overwrite.
+
+
+With colon syntax, we get fewer calls. We only get 4 calls (2x ctor, 2x dtor), rather than 10.
