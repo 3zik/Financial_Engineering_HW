@@ -1,0 +1,6 @@
+Q: What implementation did you give Draw() in Shape?
+On first pass: an empty body (void Shape::Draw() const {}), which is reasonable since Shape 
+is a pure abstraction with no physical form, so there's genuinely nothing to draw.
+
+Q: Try to create an instance of Shape. Is this possible?
+Not once Draw() is pure virtual (virtual void Draw() const = 0;). The compiler rejects it.

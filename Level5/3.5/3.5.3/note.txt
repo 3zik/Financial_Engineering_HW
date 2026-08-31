@@ -1,0 +1,9 @@
+Will the proper destructors be called (before making ~Shape() virtual)?
+
+No. delete shapes[i] on a Shape* only calls ~Shape(), so the dtor is resolved from the pointer's type. 
+This leads to incorrect dtors being called.
+
+Are the proper dtors called after declaring Shape() as virtual?
+
+Yes. After using the virtual keyword, we construct the vtable and every dtor in the chain fires correctly.
+So, it called derived class dtor, then base class dtor for every object.

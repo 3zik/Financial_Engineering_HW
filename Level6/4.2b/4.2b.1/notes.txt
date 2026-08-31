@@ -1,0 +1,17 @@
+Output:
+
+10
+10
+10
+15
+15
+10
+
+Why?
+
+A static member of a class template is not one variable shared by every Array<T> ever made. It is one static variable per instantiation.
+
+So basically, Array<int> and Array<double> are two different classes to the compiler.
+
+Because of this intArray1 and intArray2 are both Array<int>, and so they both jump to 15 because they share the Array<int>::s_defaultSize.
+doubleArray does not share this with them, so it stays at 10 and never sees the change.

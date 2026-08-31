@@ -1,0 +1,7 @@
+Does Print() print the right information even though Point and Line don't have their own Print() function?
+
+YES, p.Print() and l.Print() both call the single, shared Shape::Print().
+ToString() still dispatches virtually to whichever override matches the actual runtime type.
+So p.Print() internally calls Point::ToString(), and l.Print() calls Line::ToString()
+
+

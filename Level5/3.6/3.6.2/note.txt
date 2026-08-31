@@ -1,0 +1,7 @@
+Access an element that doesn't exist, with no exception handling. What happens?
+
+The program crashes. operator[] throws -1 (an int), nothing catches it, so the C++ runtime calls std::terminate() -> abort()
+
+With the try/catch(int) in place?
+
+The program handles it, prints error message, and keeps exectuing normally.

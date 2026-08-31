@@ -1,0 +1,5 @@
+Tip, by placing the following code at the end of the array header file, but before the header file’s #endif, the client can keep including the header file for template classes instead of the source file. Can you explain how this works?:
+
+Templates aren't real code until the compiler sees the type they use. A .cpp compiled on its own with no T gives no usable code, so we can't just do build in header, define in source, and link seperately (as we do with other objects  we instantiate).
+
+The workaround is to make the header drag the definitions at the bottom of array.hpp and at the top of array.cpp

@@ -1,0 +1,3 @@
+Q: Is the ToString() function of Point called when you use a Shape* that contains a Point now?
+
+A: YES

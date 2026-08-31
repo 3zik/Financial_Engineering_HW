@@ -1,0 +1,21 @@
+What assumptions do you make about the type used as the template arugment (T) ?
+
+NumericArray<T> only compiles member functions that actually get called so the requiremetns on T depend on which operations you use:
+
+default ctor uses new, so T must be default constructable
+
+SetElement, operator[], copy ctor assign T objects, so T must be copy-assignable
+
+operator* requires T to support T * T elementwise multiplication via operator*
+
+operator+ requires T to support T + T via operator+
+
+DotProduct requires T to support BOTH T::operator* and T::operator+ 
+
+
+Can you create a numericArray<Point>?
+
+You can create and construct one because T only needs to be default constructable and copy assignable. However, the Point object does not support the operator* and operator+ (and then also therefore DotProduct), so these operators fail to instantiate.
+
+So, Array<T> is usable for any type, but it never assumes numeric operations.
+Then, NumericArray<T> is ok for any type until you try to do numeric operations.
